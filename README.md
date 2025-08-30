@@ -193,7 +193,8 @@ Demonstrates hybrid app publishing and secure remote access.
 
 
 
- ### [Video Walkthrough](https://youtu.be/7eJexJVCqJo)
+ ### [Video Walkthrough upcoming...]()
+  
 
 <h2>Description</h2>
 Project consists of a simple PowerShell script that walks the user through "zeroing out" (wiping) any drives that are connected to the system. The utility allows you to select the target disk and choose the number of passes that are performed. The PowerShell script will configure a diskpart script file based on the user's selections and then launch Diskpart to perform the disk sanitization.
@@ -227,7 +228,7 @@ Project consists of a simple PowerShell script that walks the user through "zero
 
 This lab demonstrates an enterprise-relevant hybrid identity management environment, integrating on-premises Active Directory with Azure Active Directory.
 
-Key value highlights include:
+#### Key value highlights include:
 
 Security → Leveraging PKI, certificate services, and modern authentication (MFA, conditional access).
 
@@ -235,7 +236,7 @@ Scalability → Supporting growth from local infrastructure to cloud-based servi
 
 Modern Access → Enabling secure remote access through Azure AD Application Proxy and unified identities.
 
-By implementing this hybrid model, organizations establish a strong foundation for:
+#### By implementing this hybrid model, organizations establish a strong foundation for:
 
 Zero Trust security architecture.
 
