@@ -115,16 +115,17 @@ This lab includes real-world IT scenarios:
 
 ## 📸 Screenshots
 
-*(Add your screenshots here)*
+### Active Directory Users & Groups
+![AD Users](screenshots/ad_users.png)
 
-Suggested:
+### Group Policy Configuration
+![GPO](screenshots/gpo.png)
 
-* Active Directory Users & Computers
-* Certificate Authority configuration
-* Azure AD Connect sync
-* Azure portal (users / login)
-* App Proxy access
+### Certificate Authority (AD CS)
+![Certificates](screenshots/certificate.png)
 
+### Domain Controller Setup
+![Server](screenshots/server.png)
 ---
 
 ## 🎥 Video Demonstration
