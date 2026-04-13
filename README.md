@@ -174,7 +174,7 @@ I focus on building structured, secure, and scalable IT environments.
 ## 📫 Contact
 
 * GitHub: [https://github.com/kodjoballo](https://github.com/kodjoballo)
-* Upwork: [(your link)](https://www.upwork.com/freelancers/~014627f395c6a1484e?mp_source=share)
+* Upwork: [(https://www.upwork.com/freelancers/~014627f395c6a1484e?mp_source=share)]
 
 ---
 
