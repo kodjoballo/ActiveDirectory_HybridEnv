@@ -1,68 +1,6 @@
-# Active Directory Hybrid Environnement
-
-Active directory on premise with all tiers deployment, and users synced to the cloud 
-
-<h1> Full description and Components</h1>
-
-## 1. Introduction
-
-This project demonstrates the deployment of a Hybrid Active Directory environment, where an on-premises Active Directory (AD) domain is seamlessly integrated with Azure Active Directory (Azure AD) through Azure AD Connect.
-
-The lab showcases several key capabilities, including:
-
-Identity synchronization → ensuring users have a single identity across on-premises and cloud resources.
-
-Active Directory Certificate Services (AD CS) → enabling secure authentication, certificates, and encryption.
-
-Hybrid application publishing → providing secure access to internal applications from anywhere.
-
-### Why This Matters
-
-Modern enterprises often operate across both on-premises datacenters and cloud platforms. A hybrid AD environment provides:
-
-Unified identity management → one set of credentials for both local and cloud resources.
-
-Improved security → stronger authentication, conditional access, and reduced attack surface.
-
-Scalability & flexibility → extend on-premises infrastructure to the cloud without disrupting existing services.
-
-This lab serves as a practical simulation of how IT teams can design, implement, and manage hybrid identity infrastructures that meet real-world enterprise needs.
 
 
-## 2- High-Level Architecture
-
-The lab environment is structured into two main layers: the On-Premises Layer and the Cloud Layer.
-
-### On-Premises Layer
-
-This simulates a traditional enterprise datacenter, hosting the following components:
-
-Domain Controller (DC) → Core of Active Directory for identity and authentication.
-
-DNS/DHCP → Provides name resolution and IP address management for the local network.
-
-Public Key Infrastructure (PKI) → Issues certificates for secure communication and authentication.
-
-IIS Web Server → Hosts internal applications and services for testing hybrid publishing.
-
-NDES (Network Device Enrollment Service) → Supports certificate enrollment for devices.
-
-Client Machine → Represents end-users logging in, authenticating, and accessing services.
-
-### Cloud Layer (Azure)
-
-This layer extends identity and application access to the cloud:
-
-Azure AD → Cloud-based directory for centralized identity management.
-
-Azure AD Connect → Synchronizes on-premises users, groups, and credentials with Azure AD.
-
-Azure Key Vault → Securely stores certificates, secrets, and encryption keys.
-
-Azure AD Application Proxy → Publishes internal apps securely for external access.
-
-
-
+# 🏢 Hybrid Active Directory Lab – Enterprise Identity & Security Architecture
 
 <p align="center">
 
@@ -70,188 +8,173 @@ Azure AD Application Proxy → Publishes internal apps securely for external acc
 
 </p>
 
-## 3. On-Premises Deployment
 
-### 🖥️ Domain Controller (Windows Server 2022 DC)
+## 📌 Overview
 
-Installed AD DS → Created forest root domain (yourdomain.local).
+This project demonstrates the design and implementation of a **Hybrid Active Directory environment**, integrating on-premises infrastructure with Microsoft Azure.
 
-Configured Group Policy Objects (GPOs) for password policy, lockout policy.
+The lab simulates a real enterprise setup where identity, security, and application access are managed across both local and cloud environments.
 
-Provides central authentication for users.
+Key focus areas include:
 
-### 🌐 DNS & DHCP
+* Hybrid identity synchronization (On-Prem AD ↔ Azure AD)
+* Enterprise security with Public Key Infrastructure (PKI)
+* Secure application publishing
+* Centralized user and access management
 
-DNS configured for internal resolution (yourdomain.local).
+---
 
-DHCP scope assigned to client PCs dynamically.
+## 🧠 Why This Matters
 
-Demonstrate client joining the domain.
+Modern organizations operate in hybrid environments combining on-premises systems and cloud platforms.
 
-### 🔐 Public Key Infrastructure (PKI)
+This architecture enables:
 
-Offline Root CA (WS2019): Secure trust anchor, only issues to subordinate CA.
+* **Unified Identity Management** → Single sign-on across all systems
+* **Enhanced Security** → Certificates, MFA, Conditional Access
+* **Scalability** → Seamless extension to cloud services
+* **Secure Remote Access** → Without traditional VPN dependency
 
-Enterprise CA (WS2022): Issues certs to users, computers, IIS web apps.
+---
 
-Used for SSL, smartcard logon, and securing RDP/IIS.
+## 🏗️ Architecture Overview
 
-### 🌍 IIS Web Server
+The environment is divided into two main layers:
 
-Hosts internal apps and Certificate Enrollment Web Service.
+### 🖥️ On-Premises Infrastructure
 
-Later published securely using Azure AD App Proxy.
+* Domain Controller (Windows Server 2022)
+* DNS & DHCP services
+* Public Key Infrastructure (Offline Root CA + Enterprise CA)
+* IIS Web Server (internal applications)
+* NDES Server (device certificate enrollment)
+* Windows 11 Client machine
 
-### 📡 NDES Server (WS2019)
+---
 
-Provides certificate enrollment for devices not domain-joined (e.g., routers, IoT).
+### ☁️ Cloud Infrastructure (Azure)
 
-### 💻 Client (Windows 11)
+* Azure Active Directory (Azure AD)
+* Azure AD Connect (identity synchronization)
+* Azure AD Application Proxy (secure remote access)
+* Azure Key Vault (certificate & secret storage)
 
-Domain-joined workstation used to log in with on-prem credentials.
+---
 
-Tests SSO and certificate-based access.
-<h2> Key Benefits </h2>
-Unified Identity: Single sign-on (SSO) experience for both on-premises and cloud resources.
+## ⚙️ Core Implementations
 
-Security: PKI-backed authentication, Conditional Access, and secure app publishing.
+### 👥 Identity & Access Management
 
-Scalability: Foundation for future cloud migrations and modern authentication scenarios.
+* Active Directory domain setup (yourdomain.local)
+* User and group management
+* Group Policy configuration (security & compliance)
+* Centralized authentication system
 
+---
 
-## 4. Hybrid Identity Integration
+### 🔄 Hybrid Identity (Azure AD Connect)
 
-### 🔄 Azure AD Connect
+* Configured Password Hash Synchronization (PHS)
+* Synced users and groups from on-prem to Azure AD
+* Demonstrated seamless login across environments
 
-Installed on DC.
+---
 
-Configured in Password Hash Sync (PHS) mode (simplest for labs).
+### 🔐 Public Key Infrastructure (PKI & AD CS)
 
-Synced: users, groups, and selected attributes.
+* Deployed Offline Root CA and Enterprise CA
+* Issued certificates to users, computers, and services
+* Implemented certificate-based authentication scenarios
 
-Demonstrate:
+This reflects enterprise-grade security practices for:
 
-Create a user in on-prem AD → syncs to Azure AD.
+* Secure communication (SSL)
+* User authentication
+* System trust and encryption
 
-Show user logging into Microsoft 365 portal with the same password.
+---
 
+### 🌍 Application Publishing (Azure AD App Proxy)
 
-## 5. Azure Cloud Components
+* Published internal IIS web application securely
+* Enabled remote access via Azure authentication
+* Eliminated need for VPN access
 
+---
 
-### ☁️ Azure AD
+## 🧪 Key Demonstrations
 
-Receives synced accounts.
+This lab includes real-world IT scenarios:
 
-Conditional Access policies enforced (MFA, device compliance).
+* User creation in on-prem AD → synchronized to Azure AD
+* Login to Microsoft 365 with synchronized credentials
+* Certificate issuance and validation
+* Secure access to internal applications via Azure App Proxy
 
-### 🔑 Azure Key Vault (Optional but nice)
+---
 
-Secure storage for certificates and secrets.
+## 📸 Screenshots
 
-Example: store SSL cert from Enterprise CA.
+*(Add your screenshots here)*
 
-### 🔒 Azure AD App Proxy
+Suggested:
 
-Publishes on-prem IIS web app.
+* Active Directory Users & Computers
+* Certificate Authority configuration
+* Azure AD Connect sync
+* Azure portal (users / login)
+* App Proxy access
 
-Remote user logs into app.yourdomain.com via Azure SSO, without VPN.
+---
 
-## 6. Key Demonstrations for the Video
+## 🎥 Video Demonstration
 
-To keep the lab walkthrough concise but impactful, the video highlights four core demonstrations:
+Full walkthrough of the lab:
 
-✅ Step 1: Domain Join Process
+👉 (Insert your video link here)
 
-Show how a client machine is joined to the on-premises Active Directory domain.
+---
 
-Demonstrates centralized identity management and policy enforcement.
+## 🛠️ Technologies Used
 
-✅ Step 2: User Creation & Synchronization
+* Windows Server 2022 / 2019
+* Active Directory Domain Services (AD DS)
+* Active Directory Certificate Services (AD CS)
+* Azure Active Directory
+* Azure AD Connect
+* IIS Web Server
+* PowerShell
+* Hyper-V
 
-Create a new user in the on-premises Active Directory.
+---
 
-Sync the account to Azure AD using Azure AD Connect.
+## 🧠 Key Takeaways
 
-Log in with the synchronized account to Microsoft 365 services (e.g., Outlook or Teams).
+* Designed and implemented hybrid identity infrastructure
+* Integrated on-premises and cloud authentication systems
+* Applied enterprise-level security using PKI and certificates
+* Enabled secure remote access to internal resources
+* Demonstrated real-world IT support and system administration scenarios
 
-✅ Step 3: PKI Certificate Issuance
+---
 
-Demonstrate certificate issuance via the internal PKI/AD CS infrastructure.
+## 🚀 About Me
 
-Example: issuing a user authentication certificate or an IIS server certificate.
+I am an IT Support & Systems Engineer specializing in:
 
-Highlights secure communication and authentication in a hybrid setup.
+* Active Directory & Windows Server environments
+* Hybrid identity (Azure AD)
+* Automation (Python & PowerShell)
+* Troubleshooting and system optimization
 
-✅ Step 4: Application Proxy Publishing
+I focus on building structured, secure, and scalable IT environments.
 
-Use Azure AD Application Proxy to publish the on-premises IIS web application.
+---
 
-Access the internal app securely from the internet with Azure AD authentication.
+## 📫 Contact
 
-Demonstrates hybrid app publishing and secure remote access.
+* GitHub: [https://github.com/kodjoballo](https://github.com/kodjoballo)
+* Upwork: [(your link)](https://www.upwork.com/freelancers/~014627f395c6a1484e?mp_source=share)
 
+---
 
-
- ### [Video Walkthrough upcoming...]()
-  
-
-<h2>Description</h2>
-Project consists of a simple PowerShell script that walks the user through "zeroing out" (wiping) any drives that are connected to the system. The utility allows you to select the target disk and choose the number of passes that are performed. The PowerShell script will configure a diskpart script file based on the user's selections and then launch Diskpart to perform the disk sanitization.
-<br />
-
-
-<h2>Languages and Utilities Used</h2>
-
-- <b>Hyper V</b>
-- <b>PowerShell & cmd</b> 
-- <b>Diskpart</b>
-- <b>RDC Manager</b> 
-- <b>Windows server manager and Features</b>
-- <b>NTDSutil</b> 
-- <b>etc...</b>
-
-
-<h2>Environments Used </h2>
-
-- <b>Windows Server 2022 Datacenter as Domain controller</b> 
-- <b>Windows Server 2019 Datacenter as Offline rootCA</b> 
-- <b>Windows server 2022 Datacenter as Enterprise CA</b> 
-- <b>Windows Server 2019 Datacenter as Web Server</b> 
-- <b>Windows Server 2019 Datacenter as NDES Server</b>
-- <b>Windows 11 as Client </b> (24H2)
-- <b>Kali Linux machine not in the same network </b>
-
-
-
-## 8. Conclusion / Value Proposition
-
-This lab demonstrates an enterprise-relevant hybrid identity management environment, integrating on-premises Active Directory with Azure Active Directory.
-
-#### Key value highlights include:
-
-Security → Leveraging PKI, certificate services, and modern authentication (MFA, conditional access).
-
-Scalability → Supporting growth from local infrastructure to cloud-based services without disruption.
-
-Modern Access → Enabling secure remote access through Azure AD Application Proxy and unified identities.
-
-#### By implementing this hybrid model, organizations establish a strong foundation for:
-
-Zero Trust security architecture.
-
-Cloud migration strategies where on-premises and cloud services coexist seamlessly.
-
-Future-proof IT operations that balance control, flexibility, and resilience.
-
-This lab not only showcases technical integration but also reflects the strategic direction of enterprise IT: secure, scalable, and cloud-ready.
-
-<!--
- ```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
-```
---!>
