@@ -116,16 +116,21 @@ This lab includes real-world IT scenarios:
 ## 📸 Screenshots
 
 ### Active Directory Users & Groups
-![AD Users](screenshots/ad_users.png)
+![AD Users](Screenshots/ad_users.png)
 
 ### Group Policy Configuration
-![GPO](screenshots/gpo.png)
+![GPO](Screenshots/gpo.png)
 
 ### Certificate Authority (AD CS)
-![Certificates](screenshots/certificate.png)
+![Certificates](Screenshots/certificate.png)
 
 ### Domain Controller Setup
-![Server](screenshots/server.png)
+
+![Server](Screenshots/server.png)
+
+### Azure
+![Entra ID](Screenshots/Azure.png)
+
 ---
 
 ## 🎥 Video Demonstration
