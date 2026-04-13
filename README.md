@@ -131,7 +131,7 @@ Suggested:
 
 Full walkthrough of the lab:
 
-👉 (Insert your video link here)
+👉 ([Insert your video link here](https://youtu.be/N9BLCcObw6Q))
 
 ---
 
