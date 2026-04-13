@@ -137,7 +137,7 @@ This lab includes real-world IT scenarios:
 
 Full walkthrough of the lab:
 
-👉 ([Insert your video link here](https://youtu.be/N9BLCcObw6Q))
+👉 ([video demonstration](https://youtu.be/N9BLCcObw6Q))
 
 ---
 
